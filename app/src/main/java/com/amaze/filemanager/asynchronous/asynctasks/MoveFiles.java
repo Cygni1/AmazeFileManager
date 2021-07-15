@@ -55,35 +55,35 @@ import android.widget.Toast;
  * in the same filesystem, else starting the copy service. Be advised - do not start this AsyncTask
  * directly but use {@link PrepareCopyTask} instead
  */
-public class MoveFiles extends AsyncTask<ArrayList<String>, String, Boolean> {
+public class MoveFiles extends AsyncTask<Void, Void, Boolean> {
 
-  private ArrayList<ArrayList<HybridFileParcelable>> files;
-  private ArrayList<String> paths;
-  private Context context;
-  private OpenMode mode;
-  private long totalBytes = 0l;
-  private long destinationSize = 0l;
+  private final ArrayList<ArrayList<HybridFileParcelable>> files;
+  private final ArrayList<String> paths;
+  private final Context context;
+  private final OpenMode mode;
+  private long totalBytes = 0L;
+  private long destinationSize = 0L;
   private boolean invalidOperation = false;
-  private boolean isRootExplorer;
-  private String currentPath;
+  private final boolean isRootExplorer;
+  private final String currentPath;
 
   public MoveFiles(
       ArrayList<ArrayList<HybridFileParcelable>> files,
       boolean isRootExplorer,
       String currentPath,
       Context context,
-      OpenMode mode) {
+      OpenMode mode,
+      ArrayList<String> paths) {
     this.context = context;
     this.files = files;
     this.mode = mode;
     this.isRootExplorer = isRootExplorer;
     this.currentPath = currentPath;
+    this.paths = paths;
   }
 
   @Override
-  protected Boolean doInBackground(ArrayList<String>... strings) {
-    paths = strings[0];
-
+  protected Boolean doInBackground(Void... v) {
     if (files.size() == 0) return true;
 
     for (ArrayList<HybridFileParcelable> filesCurrent : files) {
@@ -236,8 +236,6 @@ public class MoveFiles extends AsyncTask<ArrayList<String>, String, Boolean> {
   /**
    * Maintains a list of filesystems supporting the move/rename implementation. Please update to
    * return your {@link OpenMode} type if it is supported here
-   *
-   * @return
    */
   public static HashSet<OpenMode> getOperationSupportedFileSystem() {
     HashSet<OpenMode> hashSet = new HashSet<>();

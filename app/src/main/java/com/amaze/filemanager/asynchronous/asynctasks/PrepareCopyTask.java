@@ -345,8 +345,8 @@ public class PrepareCopyTask
             startService(filesToCopyPerFolder.get(i), paths.get(i), openMode);
           }
         } else {
-          new MoveFiles(filesToCopyPerFolder, rootMode, path, context.get(), openMode)
-              .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, paths);
+          new MoveFiles(filesToCopyPerFolder, rootMode, path, context.get(), openMode, paths)
+              .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }
       }
     } else {

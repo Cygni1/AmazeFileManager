@@ -1518,8 +1518,9 @@ public class MainActivity extends PermissionsActivity
                         isRootExplorer(),
                         mainFragment.getCurrentPath(),
                         mainFragment.getActivity(),
-                        OpenMode.FILE)
-                    .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, oppatheList);
+                        OpenMode.FILE,
+                        oppatheList)
+                    .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                 break;
               case NEW_FOLDER: // mkdir
                 mainActivityHelper.mkDir(
