@@ -92,7 +92,7 @@ public class MoveFilesTest extends AbstractSftpServerTest {
             null,
             ApplicationProvider.getApplicationContext(),
             OpenMode.FILE,
-                paths);
+            paths);
 
     task.doInBackground();
 
