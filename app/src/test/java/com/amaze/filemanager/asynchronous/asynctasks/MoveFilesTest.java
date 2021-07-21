@@ -90,7 +90,7 @@ public class MoveFilesTest extends AbstractSftpServerTest {
         new MoveFiles(
             filesToCopyPerFolder,
             false,
-                ApplicationProvider.getApplicationContext(),
+            ApplicationProvider.getApplicationContext(),
             OpenMode.FILE,
             paths);
 
