@@ -39,6 +39,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.annotation.Config;
 
+import com.amaze.filemanager.asynchronous.asynctasks.movecopy.MoveFiles;
 import com.amaze.filemanager.file_operations.filesystem.OpenMode;
 import com.amaze.filemanager.filesystem.HybridFileParcelable;
 import com.amaze.filemanager.filesystem.ssh.AbstractSftpServerTest;
@@ -89,8 +90,7 @@ public class MoveFilesTest extends AbstractSftpServerTest {
         new MoveFiles(
             filesToCopyPerFolder,
             false,
-            null,
-            ApplicationProvider.getApplicationContext(),
+                ApplicationProvider.getApplicationContext(),
             OpenMode.FILE,
             paths);
 
