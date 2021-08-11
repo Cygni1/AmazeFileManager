@@ -94,7 +94,7 @@ public class MoveFilesTest extends AbstractSftpServerTest {
             OpenMode.FILE,
             paths);
 
-    task.doInBackground();
+    task.call();
 
     assertFalse(sourceFile.exists());
     assertTrue(new File(Environment.getExternalStorageDirectory(), "testfile.bin").exists());
